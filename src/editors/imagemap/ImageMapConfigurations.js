@@ -5,7 +5,6 @@ import classnames from 'classnames';
 
 import NodeProperties from './properties/NodeProperties';
 import MapProperties from './properties/MapProperties';
-import Animations from './animations/Animations';
 import Styles from './styles/Styles';
 import DataSources from './datasources/DataSources';
 import Icon from '../../components/icon/Icon';
@@ -16,10 +15,8 @@ class ImageMapConfigurations extends Component {
 		canvasRef: PropTypes.any,
 		selectedItem: PropTypes.object,
 		onChange: PropTypes.func,
-		onChangeAnimations: PropTypes.func,
 		onChangeStyles: PropTypes.func,
 		onChangeDataSources: PropTypes.func,
-		animations: PropTypes.array,
 		styles: PropTypes.array,
 		dataSources: PropTypes.array,
 	};
@@ -46,10 +43,8 @@ class ImageMapConfigurations extends Component {
 			onChange,
 			selectedItem,
 			canvasRef,
-			animations,
 			styles,
 			dataSources,
-			onChangeAnimations,
 			onChangeStyles,
 			onChangeDataSources,
 		} = this.props;

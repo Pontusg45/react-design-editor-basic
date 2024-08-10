@@ -4,7 +4,6 @@ import { uuid } from 'uuidv4';
 import warning from 'warning';
 import {
 	AlignmentHandler,
-	AnimationHandler,
 	ChartHandler,
 	ContextmenuHandler,
 	CropHandler,
@@ -262,7 +261,6 @@ class Handler implements HandlerOptions {
 	public chartHandler: ChartHandler;
 	public elementHandler: ElementHandler;
 	public cropHandler: CropHandler;
-	public animationHandler: AnimationHandler;
 	public contextmenuHandler: ContextmenuHandler;
 	public tooltipHandler: TooltipHandler;
 	public zoomHandler: ZoomHandler;
@@ -374,7 +372,6 @@ class Handler implements HandlerOptions {
 		this.chartHandler = new ChartHandler(this);
 		this.elementHandler = new ElementHandler(this);
 		this.cropHandler = new CropHandler(this);
-		this.animationHandler = new AnimationHandler(this);
 		this.contextmenuHandler = new ContextmenuHandler(this);
 		this.tooltipHandler = new TooltipHandler(this);
 		this.zoomHandler = new ZoomHandler(this, this.zoomStep);

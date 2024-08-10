@@ -1,23 +1,7 @@
 import { fabric } from 'fabric';
 import { IFilter } from '../handlers/ImageHandler';
 
-export type AnimationType = 'fade' | 'bounce' | 'shake' | 'scaling' | 'rotation' | 'flash' | 'custom' | 'none';
 
-export interface AnimationProperty {
-	delay?: number;
-	duration?: number;
-	autoplay?: boolean;
-	loop?: boolean | number;
-	type: AnimationType;
-	offset?: number;
-	opacity?: number;
-	bounce?: 'vertical' | 'horizontal';
-	shake?: 'vertical' | 'horizontal';
-	scale?: number;
-	angle?: number;
-	fill?: string | fabric.Pattern;
-	stroke?: string;
-}
 
 export interface LinkProperty {
 	enabled?: boolean;
@@ -118,11 +102,6 @@ export type FabricObjectOption<T extends any = fabric.IObjectOptions> = T & {
 	 * @type {string}
 	 */
 	description?: string;
-	/**
-	 * Animation property
-	 * @type {AnimationProperty}
-	 */
-	animation?: AnimationProperty;
 	/**
 	 * Anime instance
 	 * @type {anime.AnimeInstance}

@@ -9,7 +9,6 @@ import LinkProperty from './LinkProperty';
 import VideoProperty from './VideoProperty';
 import ElementProperty from './ElementProperty';
 import IframeProperty from './IframeProperty';
-import AnimationProperty from './AnimationProperty';
 import ShadowProperty from './ShadowProperty';
 import UserProperty from './UserProperty';
 import TriggerProperty from './TriggerProperty';
@@ -62,10 +61,6 @@ export default {
 			title: 'Shadow',
 			component: ShadowProperty,
 		},
-		animation: {
-			title: 'Animation',
-			component: AnimationProperty,
-		},
 		trigger: {
 			title: 'Trigger',
 			component: TriggerProperty,
@@ -99,10 +94,6 @@ export default {
 		shadow: {
 			title: 'Shadow',
 			component: ShadowProperty,
-		},
-		animation: {
-			title: 'Animation',
-			component: AnimationProperty,
 		},
 		trigger: {
 			title: 'Trigger',
@@ -142,10 +133,6 @@ export default {
 			title: 'Shadow',
 			component: ShadowProperty,
 		},
-		animation: {
-			title: 'Animation',
-			component: AnimationProperty,
-		},
 		trigger: {
 			title: 'Trigger',
 			component: TriggerProperty,
@@ -175,10 +162,6 @@ export default {
 		shadow: {
 			title: 'Shadow',
 			component: ShadowProperty,
-		},
-		animation: {
-			title: 'Animation',
-			component: AnimationProperty,
 		},
 		trigger: {
 			title: 'Trigger',
@@ -210,10 +193,6 @@ export default {
 			title: 'Shadow',
 			component: ShadowProperty,
 		},
-		animation: {
-			title: 'Animation',
-			component: AnimationProperty,
-		},
 		trigger: {
 			title: 'Trigger',
 			component: TriggerProperty,
@@ -243,10 +222,6 @@ export default {
 		shadow: {
 			title: 'Shadow',
 			component: ShadowProperty,
-		},
-		animation: {
-			title: 'Animation',
-			component: AnimationProperty,
 		},
 		trigger: {
 			title: 'Trigger',
@@ -278,10 +253,6 @@ export default {
 			title: 'Shadow',
 			component: ShadowProperty,
 		},
-		animation: {
-			title: 'Animation',
-			component: AnimationProperty,
-		},
 		trigger: {
 			title: 'Trigger',
 			component: TriggerProperty,
@@ -312,10 +283,6 @@ export default {
 			title: 'Shadow',
 			component: ShadowProperty,
 		},
-		animation: {
-			title: 'Animation',
-			component: AnimationProperty,
-		},
 		trigger: {
 			title: 'Trigger',
 			component: TriggerProperty,
@@ -345,10 +312,6 @@ export default {
 		shadow: {
 			title: 'Shadow',
 			component: ShadowProperty,
-		},
-		animation: {
-			title: 'Animation',
-			component: AnimationProperty,
 		},
 		trigger: {
 			title: 'Trigger',
@@ -409,10 +372,6 @@ export default {
 		shadow: {
 			title: 'Shadow',
 			component: ShadowProperty,
-		},
-		animation: {
-			title: 'Animation',
-			component: AnimationProperty,
 		},
 		trigger: {
 			title: 'Trigger',

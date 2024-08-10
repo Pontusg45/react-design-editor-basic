@@ -8,7 +8,6 @@ export { default as ElementHandler } from './ElementHandler';
 
 export { default as CropHandler } from './CropHandler';
 
-export { default as AnimationHandler } from './AnimationHandler';
 
 export { default as ContextmenuHandler } from './ContextmenuHandler';
 

@@ -23,7 +23,6 @@ const propertiesToInclude = [
 	'src',
 	'link',
 	'tooltip',
-	'animation',
 	'layout',
 	'workareaWidth',
 	'workareaHeight',
@@ -58,12 +57,6 @@ const defaultOption = {
 		type: 'resource',
 		template: '<div>{{message.name}}</div>',
 	},
-	animation: {
-		type: 'none',
-		loop: true,
-		autoplay: true,
-		duration: 1000,
-	},
 	userProperty: {},
 	trigger: {
 		enabled: false,
@@ -80,7 +73,6 @@ class ImageMapEditor extends Component {
 		preview: false,
 		loading: false,
 		progress: 0,
-		animations: [],
 		styles: [],
 		dataSources: [],
 		editing: false,
@@ -124,21 +116,11 @@ class ImageMapEditor extends Component {
 				if (selectedItem && target.id === selectedItem.id) {
 					return;
 				}
-				this.canvasRef.handler.getObjects().forEach(obj => {
-					if (obj) {
-						this.canvasRef.handler.animationHandler.resetAnimation(obj, true);
-					}
-				});
 				this.setState({
 					selectedItem: target,
 				});
 				return;
 			}
-			this.canvasRef.handler.getObjects().forEach(obj => {
-				if (obj) {
-					this.canvasRef.handler.animationHandler.resetAnimation(obj, true);
-				}
-			});
 			this.setState({
 				selectedItem: null,
 			});
@@ -208,11 +190,6 @@ class ImageMapEditor extends Component {
 			if (changedKey === 'tooltip') {
 				const tooltip = Object.assign({}, defaultOption.tooltip, allValues.tooltip);
 				this.canvasRef.handler.set(changedKey, tooltip);
-				return;
-			}
-			if (changedKey === 'animation') {
-				const animation = Object.assign({}, defaultOption.animation, allValues.animation);
-				this.canvasRef.handler.set(changedKey, animation);
 				return;
 			}
 			if (changedKey === 'icon') {
@@ -322,8 +299,8 @@ class ImageMapEditor extends Component {
 				try {
 					const sandbox = new SandBox();
 					const compiled = sandbox.compile(changedValue);
-					const { animations, styles } = this.state;
-					const chartOption = compiled(3, animations, styles, selectedItem.userProperty);
+					const { styles } = this.state;
+					const chartOption = compiled(3, styles, selectedItem.userProperty);
 					selectedItem.setChartOptionStr(changedValue);
 					this.canvasRef.handler.elementHandler.setById(selectedItem.id, chartOption);
 				} catch (error) {
@@ -505,9 +482,8 @@ class ImageMapEditor extends Component {
 						}
 					};
 					reader.onload = e => {
-						const { objects, animations, styles, dataSources } = JSON.parse(e.target.result);
+						const { objects, styles, dataSources } = JSON.parse(e.target.result);
 						this.setState({
-							animations,
 							styles,
 							dataSources,
 						});
@@ -552,10 +528,9 @@ class ImageMapEditor extends Component {
 				}
 				return true;
 			});
-			const { animations, styles, dataSources } = this.state;
+			const { styles, dataSources } = this.state;
 			const exportDatas = {
 				objects,
-				animations,
 				styles,
 				dataSources,
 			};
@@ -568,14 +543,6 @@ class ImageMapEditor extends Component {
 			anchorEl.click();
 			anchorEl.remove();
 			this.showLoading(false);
-		},
-		onChangeAnimations: animations => {
-			if (!this.state.editing) {
-				this.changeEditing(true);
-			}
-			this.setState({
-				animations,
-			});
 		},
 		onChangeStyles: styles => {
 			if (!this.state.editing) {
@@ -596,6 +563,9 @@ class ImageMapEditor extends Component {
 		onSaveImage: () => {
 			this.canvasRef.handler.saveCanvasImage();
 		},
+		onCopy: () => {
+			this.canvasRef.handler.copy();
+		}
 	};
 
 	transformList = () => {
@@ -621,7 +591,6 @@ class ImageMapEditor extends Component {
 			zoomRatio,
 			loading,
 			progress,
-			animations,
 			styles,
 			dataSources,
 			editing,
@@ -644,7 +613,6 @@ class ImageMapEditor extends Component {
 			onChangePreview,
 			onDownload,
 			onUpload,
-			onChangeAnimations,
 			onChangeStyles,
 			onChangeDataSources,
 			onSaveImage,
@@ -764,10 +732,8 @@ class ImageMapEditor extends Component {
 					canvasRef={this.canvasRef}
 					onChange={onChange}
 					selectedItem={selectedItem}
-					onChangeAnimations={onChangeAnimations}
 					onChangeStyles={onChangeStyles}
 					onChangeDataSources={onChangeDataSources}
-					animations={animations}
 					styles={styles}
 					dataSources={dataSources}
 				/>
