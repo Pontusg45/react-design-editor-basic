@@ -6,12 +6,9 @@ import { Flex } from '../flex';
 import { ShortcutHelp } from '../help';
 import Icon from '../icon/Icon';
 
-interface IProps {
-	onChangeEditor: (param: ClickParam) => void;
-	currentEditor: string;
-}
 
-class Title extends Component<IProps> {
+
+class Title extends Component {
 	state = {
 		visible: false,
 	};
@@ -86,29 +83,6 @@ class Title extends Component<IProps> {
 							<Icon name="question" prefix="fas" size={1.5} />
 						</Button>
 					</Tooltip>
-				</Flex>
-				<Flex style={{ marginLeft: 88 }}>
-					<Menu
-						mode="horizontal"
-						theme="dark"
-						style={{ background: 'transparent', fontSize: '16px' }}
-						onClick={this.props.onChangeEditor}
-						selectedKeys={[this.props.currentEditor]}
-					>
-						<Menu.Item key="imagemap" style={{ color: '#fff' }}>
-							{i18next.t('imagemap.imagemap')}
-						</Menu.Item>
-						<Menu.Item key="workflow" style={{ color: '#fff' }}>
-							{i18next.t('workflow.workflow')}
-						</Menu.Item>
-						{/* <Menu.Item key="flow" style={{ color: '#fff' }}>{i18n.t('flow.flow')}</Menu.Item> */}
-						{/* <Menu.Item key="hexgrid" style={{ color: '#fff' }}>
-							{i18next.t('hexgrid.hexgrid')}
-						</Menu.Item>
-						<Menu.Item key="fiber" style={{ color: '#fff' }}>
-							{i18next.t('fiber.fiber')}
-						</Menu.Item> */}
-					</Menu>
 				</Flex>
 				<Flex flex="1" justifyContent="flex-end">
 					<ins

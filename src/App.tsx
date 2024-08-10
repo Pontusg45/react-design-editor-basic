@@ -2,42 +2,12 @@ import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import Title from './components/layout/Title';
 import FlowContainer from './containers/FlowContainer';
-import { FiberEditor, FlowEditor, HexGridEditor, ImageMapEditor, WorkflowEditor } from './editors';
+import {  ImageMapEditor } from './editors';
 
-type EditorType = 'imagemap' | 'workflow' | 'flow' | 'hexgrid' | 'fiber';
 
-interface IState {
-	activeEditor?: EditorType;
-}
 
-class App extends Component<any, IState> {
-	state: IState = {
-		activeEditor: 'imagemap',
-	};
-
-	handleChangeEditor = ({ key }) => {
-		this.setState({
-			activeEditor: key,
-		});
-	};
-
-	renderEditor = (activeEditor: EditorType) => {
-		switch (activeEditor) {
-			case 'imagemap':
-				return <ImageMapEditor />;
-			case 'workflow':
-				return <WorkflowEditor />;
-			case 'flow':
-				return <FlowEditor />;
-			case 'hexgrid':
-				return <HexGridEditor />;
-			case 'fiber':
-				return <FiberEditor />;
-		}
-	};
-
+class App extends Component<any> {
 	render() {
-		const { activeEditor } = this.state;
 		return (
 			<div className="rde-main">
 				<Helmet>
@@ -60,13 +30,14 @@ class App extends Component<any, IState> {
                         gtag('config', 'G-EH7WWSK514');
                         `}
 					</script>
-					<script async={true} src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
 				</Helmet>
 				<div className="rde-title">
-					<Title onChangeEditor={this.handleChangeEditor} currentEditor={activeEditor} />
+					<Title />
 				</div>
 				<FlowContainer>
-					<div className="rde-content">{this.renderEditor(activeEditor)}</div>
+					<div className="rde-content">
+						<ImageMapEditor />
+					</div>
 				</FlowContainer>
 			</div>
 		);
