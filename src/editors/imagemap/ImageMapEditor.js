@@ -113,6 +113,7 @@ class ImageMapEditor extends Component {
 		onSelect: target => {
 			const { selectedItem } = this.state;
 			if (target && target.id && target.id !== 'workarea' && target.type !== 'activeSelection') {
+				// @ts-ignore
 				if (selectedItem && target.id === selectedItem.id) {
 					return;
 				}
@@ -300,6 +301,7 @@ class ImageMapEditor extends Component {
 					const sandbox = new SandBox();
 					const compiled = sandbox.compile(changedValue);
 					const { styles } = this.state;
+					// @ts-ignore
 					const chartOption = compiled(3, styles, selectedItem.userProperty);
 					selectedItem.setChartOptionStr(changedValue);
 					this.canvasRef.handler.elementHandler.setById(selectedItem.id, chartOption);
@@ -363,7 +365,10 @@ class ImageMapEditor extends Component {
 								const newItem = Object.assign({}, item, { option });
 								return (
 									<Menu.Item style={{ padding: 0 }} key={item.name}>
-										{this.itemsRef.renderItem(newItem, false)}
+										{
+											// @ts-ignore
+											this.itemsRef.renderItem(newItem, false)
+										}
 									</Menu.Item>
 								);
 							})}
@@ -454,10 +459,7 @@ class ImageMapEditor extends Component {
 			let data;
 			if (this.canvasRef) {
 				data = this.canvasRef.handler.exportJSON().filter(obj => {
-					if (!obj.id) {
-						return false;
-					}
-					return true;
+					return !(!obj.id);
 				});
 			}
 			this.setState({
@@ -490,10 +492,7 @@ class ImageMapEditor extends Component {
 						if (objects) {
 							this.canvasRef.handler.clear(true);
 							const data = objects.filter(obj => {
-								if (!obj.id) {
-									return false;
-								}
-								return true;
+								return !(!obj.id);
 							});
 							this.canvasRef.handler.importJSON(data);
 						}
@@ -523,10 +522,7 @@ class ImageMapEditor extends Component {
 		onDownload: () => {
 			this.showLoading(true);
 			const objects = this.canvasRef.handler.exportJSON().filter(obj => {
-				if (!obj.id) {
-					return false;
-				}
-				return true;
+				return !(!obj.id);
 			});
 			const { styles, dataSources } = this.state;
 			const exportDatas = {
@@ -665,9 +661,7 @@ class ImageMapEditor extends Component {
 			</React.Fragment>
 		);
 		const titleContent = (
-			<React.Fragment>
-				<span>{i18n.t('imagemap.imagemap-editor')}</span>
-			</React.Fragment>
+			<span>{i18n.t('imagemap.imagemap-editor')}</span>
 		);
 		const title = <ImageMapTitle title={titleContent} action={action} />;
 		const content = (
