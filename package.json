@@ -1,6 +1,6 @@
 {
-	"name": "react-design-editor",
-	"version": "0.0.56",
+	"name": "react-design-editor-basic",
+	"version": "0.0.1",
 	"description": "Design Editor Tools with React.js + ant.design + fabric.js",
 	"main": "dist/react-design-editor.min.js",
 	"typings": "lib/index.d.ts",
@@ -24,7 +24,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/salgum1114/react-design-editor.git"
+		"url": "git+https://github.com/Pontusg45/react-design-editor-basic.git"
 	},
 	"keywords": [
 		"React.js",
@@ -33,12 +33,12 @@
 		"react-design-editor",
 		"design-tool"
 	],
-	"author": "salgum1114",
+	"author": "Pontusg45",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/salgum1114/react-design-editor/issues"
+		"url": "https://github.com/Pontusg45/react-design-editor-basic/issues"
 	},
-	"homepage": "https://salgum1114.github.io/react-design-editor",
+	"homepage": "https://github.com/Pontusg45/react-design-editor-basic",
 	"peerDependencies": {
 		"animejs": "^3.0.0",
 		"fabric": "^4.6.0",
